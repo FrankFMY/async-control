@@ -79,7 +79,13 @@ The tracker becomes idle only after every currently tracked promise settles. Obs
 
 ## Package status
 
-The GitHub repository is public. Registry publication is intentionally deferred; the npm package remains marked private until a separate release gate is completed.
+The package is published on npm from immutable Git tags. Future releases use npm Trusted Publishing.
+
+```bash
+npm install @frankfmy/async-control
+```
+
+The first npm version is bootstrapped once from its clean exact tag with interactive account 2FA using `scripts/bootstrap-first-npm-release.sh`; subsequent releases use the repository's OIDC trusted publisher.
 
 ## Development
 
