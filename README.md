@@ -11,6 +11,7 @@ I built this library for application code that needs predictable throttling, deb
 - `throttle()` — urgent or delayed execution with shared-promise semantics;
 - `debounce()` — latest-arguments execution with explicit cancellation;
 - `ActivityTracker` — accurate active/idle state across overlapping promises;
+- `ContextFence` — same-instance tickets that reject stale results after context changes or disposal;
 - `boundary()` — convert sync/async failures into a value or fallback function.
 
 ## Throttle semantics
@@ -73,19 +74,53 @@ await tracker.idle();
 
 The tracker becomes idle only after every currently tracked promise settles. Observing a promise does not suppress its rejection for the original caller.
 
+## Context freshness
+
+```ts
+import { ContextFence } from "@frankfmy/async-control";
+
+const context = new ContextFence("document-a");
+const ticket = context.capture();
+const pending = Promise.resolve({ title: "Draft" });
+
+context.set("document-b");
+const result = await pending;
+if (context.accepts(ticket)) {
+  console.log(result); // Not reached: the result belongs to the earlier context.
+}
+context.dispose();
+```
+
+`capture()` returns a frozen ticket. `set(next)` compares contexts with `Object.is`:
+an equal key keeps the current ticket, while changing away and back never revives an
+old ticket. `invalidate()` creates a fresh ticket without changing the key. `accepts()`
+requires the exact current object from the same fence; another fence's ticket or a
+structural copy is rejected. `dispose()` is terminal and idempotent: it releases the
+fence's context reference, rejects every ticket, and makes capture/set/invalidate throw.
+
+Use stable primitive keys where possible. Object contexts are compared by identity and
+held by reference: they are neither cloned nor deeply frozen, and mutating an object does
+not invalidate its ticket. This is cooperative freshness coordination, not cancellation,
+authentication, a wire protocol or a security capability. Check a ticket immediately
+before applying a result; another `await` creates another opportunity for context change.
+Existing async primitives retain their previous behavior.
+
 ## Testability
 
 `throttle()` and `debounce()` accept injected timer/scheduler adapters. Tests can control timing without real sleeps or global fake timers.
 
-## Package status
+## Install version 0.2.0
 
-The package is published on npm from immutable Git tags. Future releases use npm Trusted Publishing.
+Versioned package archives accompany [GitHub releases](https://github.com/FrankFMY/async-control/releases).
+Registry availability is not assumed. Install the release artifact:
 
 ```bash
-npm install @frankfmy/async-control
+npm install https://github.com/FrankFMY/async-control/releases/download/v0.2.0/frankfmy-async-control-0.2.0.tgz
 ```
 
-The first npm version is bootstrapped once from its clean exact tag with interactive account 2FA using `scripts/bootstrap-first-npm-release.sh`; subsequent releases use the repository's OIDC trusted publisher.
+Alternatively, clone the repository, build it using the commands below, then run
+`npm pack` and install the resulting tarball in your own project. Package metadata
+currently prevents accidental registry publication; it does not prevent tarball use.
 
 ## Development
 
@@ -101,8 +136,7 @@ bun run verify
 **Artem Prianishnikov**
 
 - GitHub: https://github.com/FrankFMY
-- Website: https://frankfmy.com
-- Email: Pryanishnikovartem@gmail.com
+
 
 ## License
 

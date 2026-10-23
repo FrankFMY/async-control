@@ -1,6 +1,7 @@
 {
   "name": "@frankfmy/async-control",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "private": true,
   "description": "Small, typed async control primitives for TypeScript.",
   "type": "module",
   "sideEffects": false,
@@ -21,7 +22,8 @@
     "build": "tsc -p tsconfig.build.json",
     "check": "tsc -p tsconfig.json",
     "test": "bun test",
-    "verify": "bun run check && bun test && bun run build && bun run package:check",
+    "lint": "oxlint --deny-warnings src test scripts/verify-package-contract.mjs",
+    "verify": "bun run lint && bun run check && bun test && bun run build && bun run package:check",
     "prepack": "bun run build",
     "package:check": "node scripts/verify-package-contract.mjs"
   },
@@ -31,15 +33,15 @@
     "throttle",
     "debounce",
     "promise",
-    "activity-tracker"
+    "activity-tracker",
+    "context-fence"
   ],
   "author": {
     "name": "Artem Prianishnikov",
-    "email": "Pryanishnikovartem@gmail.com",
-    "url": "https://frankfmy.com"
+    "url": "https://github.com/FrankFMY"
   },
   "license": "MIT",
-  "homepage": "https://frankfmy.com",
+  "homepage": "https://github.com/FrankFMY/async-control#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FrankFMY/async-control.git"
@@ -50,13 +52,15 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "bun@1.4.0",
+  "packageManager": "bun@1.4.2",
   "devDependencies": {
     "@types/bun": "1.4.0",
     "@types/node": "^24.0.0",
+    "oxlint": "1.89.0",
     "typescript": "^6.0.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

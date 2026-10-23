@@ -1,5 +1,7 @@
 node_modules/
 dist/
+.verification/
+.artifacts/
 coverage/
 .env
 .env.*
