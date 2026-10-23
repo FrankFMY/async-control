@@ -1,3 +1,5 @@
+export { ContextFence, type ContextTicket } from "./context.js";
+
 export type MaybePromise<T> = T | Promise<T>;
 export type AnyFunction = (...args: never[]) => unknown;
 

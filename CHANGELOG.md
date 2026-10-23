@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0
+
+- Add `ContextFence` and typed, frozen context tickets for cooperative stale-result rejection.
+- Reject cross-instance tickets, structural copies, old contexts and late results after disposal.
+- Preserve all existing throttle, debounce, deferred, activity and boundary behavior.
+- Document versioned GitHub package installation without assuming registry availability.
+- Remove automatic registry release execution; verification and release remain separate operations.
+
 ## 0.1.0
 
 - Initial public source release.
