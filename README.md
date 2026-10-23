@@ -109,14 +109,25 @@ Existing async primitives retain their previous behavior.
 
 `throttle()` and `debounce()` accept injected timer/scheduler adapters. Tests can control timing without real sleeps or global fake timers.
 
-## Install version 0.2.0
+## Install version 0.2.1
 
 Versioned package archives accompany [GitHub releases](https://github.com/FrankFMY/async-control/releases).
-Registry availability is not assumed. Install the release artifact:
+Registry availability is not assumed. Download and verify the release artifact,
+then install the local archive:
 
 ```bash
-npm install https://github.com/FrankFMY/async-control/releases/download/v0.2.0/frankfmy-async-control-0.2.0.tgz
+curl --fail --location --output frankfmy-async-control-0.2.1.tgz \
+  https://github.com/FrankFMY/async-control/releases/download/v0.2.1/frankfmy-async-control-0.2.1.tgz &&
+curl --fail --location --output SHA256SUMS \
+  https://github.com/FrankFMY/async-control/releases/download/v0.2.1/SHA256SUMS &&
+sha256sum --check SHA256SUMS &&
+npm install ./frankfmy-async-control-0.2.1.tgz
 ```
+
+As of npm 12, direct URL dependencies are disabled by default. Downloading the
+archive and checking its SHA-256 first works without changing that policy.
+Verify that the checksum command succeeds before installing. On platforms without
+`sha256sum`, use an equivalent SHA-256 verifier against the downloaded listing.
 
 Alternatively, clone the repository, build it using the commands below, then run
 `npm pack` and install the resulting tarball in your own project. Package metadata
