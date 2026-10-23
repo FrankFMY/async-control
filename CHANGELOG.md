@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- Use verified download followed by local tarball installation in the quickstart, compatible with npm 12's default remote-dependency policy.
+- No runtime or type API changes from 0.2.0.
+
 ## 0.2.0
 
 - Add `ContextFence` and typed, frozen context tickets for cooperative stale-result rejection.
