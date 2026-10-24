@@ -109,19 +109,19 @@ Existing async primitives retain their previous behavior.
 
 `throttle()` and `debounce()` accept injected timer/scheduler adapters. Tests can control timing without real sleeps or global fake timers.
 
-## Install version 0.2.1
+## Install version 0.2.2
 
 Versioned package archives accompany [GitHub releases](https://github.com/FrankFMY/async-control/releases).
 Registry availability is not assumed. Download and verify the release artifact,
 then install the local archive:
 
 ```bash
-curl --fail --location --output frankfmy-async-control-0.2.1.tgz \
-  https://github.com/FrankFMY/async-control/releases/download/v0.2.1/frankfmy-async-control-0.2.1.tgz &&
+curl --fail --location --output frankfmy-async-control-0.2.2.tgz \
+  https://github.com/FrankFMY/async-control/releases/download/v0.2.2/frankfmy-async-control-0.2.2.tgz &&
 curl --fail --location --output SHA256SUMS \
-  https://github.com/FrankFMY/async-control/releases/download/v0.2.1/SHA256SUMS &&
+  https://github.com/FrankFMY/async-control/releases/download/v0.2.2/SHA256SUMS &&
 sha256sum --check SHA256SUMS &&
-npm install ./frankfmy-async-control-0.2.1.tgz
+npm install ./frankfmy-async-control-0.2.2.tgz
 ```
 
 As of npm 12, direct URL dependencies are disabled by default. Downloading the
@@ -142,11 +142,14 @@ bun install --frozen-lockfile
 bun run verify
 ```
 
-## Author
+## Author and contact
 
-**Artem Prianishnikov**
+Created and maintained by [Artem Prianishnikov (Артем Прянишников / FrankFMY)](https://github.com/FrankFMY).
 
-- GitHub: https://github.com/FrankFMY
+- Email: [Pryanishnikovartem@gmail.com](mailto:Pryanishnikovartem@gmail.com)
+- Telegram: [@FrankFMY](https://t.me/FrankFMY)
+- Website: [frankfmy.com](https://frankfmy.com)
+- Profiles: [GitHub](https://github.com/FrankFMY) · [LinkedIn](https://www.linkedin.com/in/frankfmy/) · [X](https://x.com/FrankFMY)
 
 
 ## License
