@@ -1,6 +1,6 @@
 {
   "name": "@frankfmy/async-control",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "description": "Small, typed async control primitives for TypeScript.",
   "type": "module",
@@ -36,10 +36,7 @@
     "activity-tracker",
     "context-fence"
   ],
-  "author": {
-    "name": "Artem Prianishnikov",
-    "url": "https://github.com/FrankFMY"
-  },
+  "author": { "name": "Artem Prianishnikov", "email": "Pryanishnikovartem@gmail.com", "url": "https://frankfmy.com" },
   "license": "MIT",
   "homepage": "https://github.com/FrankFMY/async-control#readme",
   "repository": {

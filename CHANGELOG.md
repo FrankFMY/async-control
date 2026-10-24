@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- Add verified author email, Telegram and professional profile links to documentation and package metadata.
+- No runtime, declaration, dependency or public API changes.
+
+
 ## 0.2.1
 
 - Use verified download followed by local tarball installation in the quickstart, compatible with npm 12's default remote-dependency policy.
