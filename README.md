@@ -112,8 +112,16 @@ Existing async primitives retain their previous behavior.
 ## Install version 0.2.2
 
 Versioned package archives accompany [GitHub releases](https://github.com/FrankFMY/async-control/releases).
-Registry availability is not assumed. Download and verify the release artifact,
-then install the local archive:
+For npm installation, check the exact version before installing it:
+
+```sh
+npm view @frankfmy/async-control@0.2.3 version &&
+npm install @frankfmy/async-control@0.2.3
+```
+
+Registry publication is separate from the source release. If that version is
+unavailable, the immutable v0.2.2 GitHub archive remains an alternative.
+Download and verify it before installing the local archive:
 
 ```bash
 curl --fail --location --output frankfmy-async-control-0.2.2.tgz \
@@ -130,8 +138,8 @@ Verify that the checksum command succeeds before installing. On platforms withou
 `sha256sum`, use an equivalent SHA-256 verifier against the downloaded listing.
 
 Alternatively, clone the repository, build it using the commands below, then run
-`npm pack` and install the resulting tarball in your own project. Package metadata
-currently prevents accidental registry publication; it does not prevent tarball use.
+`npm pack` and install the resulting tarball in your own project. The package is
+configured for public npm distribution; verification does not publish it.
 
 ## Development
 
