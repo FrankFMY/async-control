@@ -142,6 +142,14 @@ bun install --frozen-lockfile
 bun run verify
 ```
 
+## Continuous integration
+
+[CI runs](https://github.com/FrankFMY/async-control/actions/workflows/ci.yml) run on
+pull requests, pushes to `main`, and manual dispatch. They use Node 24.20.0 and
+Bun 1.4.2 for the full `bun run verify` gate, including independent installed
+Node/Bun consumers and positive/negative types, plus a dependency audit.
+Logs are retained for seven days. This workflow does not publish packages.
+
 ## Author and contact
 
 Created and maintained by [Artem Prianishnikov (Артем Прянишников / FrankFMY)](https://github.com/FrankFMY).
