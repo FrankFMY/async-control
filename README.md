@@ -109,19 +109,18 @@ Existing async primitives retain their previous behavior.
 
 `throttle()` and `debounce()` accept injected timer/scheduler adapters. Tests can control timing without real sleeps or global fake timers.
 
-## Install version 0.2.2
+## Install from npm
 
-Versioned package archives accompany [GitHub releases](https://github.com/FrankFMY/async-control/releases).
-For npm installation, check the exact version before installing it:
+Version **0.2.3** is available as
+[@frankfmy/async-control on npm](https://www.npmjs.com/package/@frankfmy/async-control).
 
 ```sh
-npm view @frankfmy/async-control@0.2.3 version &&
 npm install @frankfmy/async-control@0.2.3
 ```
 
-Registry publication is separate from the source release. If that version is
-unavailable, the immutable v0.2.2 GitHub archive remains an alternative.
-Download and verify it before installing the local archive:
+The older, immutable **v0.2.2** archive remains an alternative in
+[GitHub releases](https://github.com/FrankFMY/async-control/releases).
+It is a different version from npm 0.2.3. Download and verify it before installing:
 
 ```bash
 curl --fail --location --output frankfmy-async-control-0.2.2.tgz \
