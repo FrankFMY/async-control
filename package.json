@@ -1,7 +1,7 @@
 {
   "name": "@frankfmy/async-control",
-  "version": "0.2.2",
-  "private": true,
+  "version": "0.2.3",
+  "private": false,
   "description": "Small, typed async control primitives for TypeScript.",
   "type": "module",
   "sideEffects": false,
